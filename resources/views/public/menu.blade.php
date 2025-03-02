@@ -20,18 +20,18 @@
 <div class="container mx-auto px-4 py-12">
     <!-- Category Navigation -->
     <div class="flex flex-wrap justify-center mb-12 gap-4 reveal">
-        <button class="category-btn active px-6 py-2 rounded-full bg-amber-900 text-white hover:bg-amber-800 transition-colors"
-                data-category="all">
+        <button onclick="filterItems('all')"
+                class="category-btn bg-amber-100 text-amber-900 px-6 py-2 rounded-full hover:bg-amber-800 hover:text-white transition-colors">
             Toate
         </button>
         @php
             $categories = $menuItems->pluck('category')->unique();
         @endphp
-        @foreach($categories as $category)
-        <button class="category-btn px-6 py-2 rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200 transition-colors"
-                data-category="{{ $category }}">
-            {{ ucfirst($category) }}
-        </button>
+        @foreach($categories as $cat)
+            <button onclick="filterItems('{{ $cat }}')"
+                    class="category-btn bg-amber-100 text-amber-900 px-6 py-2 rounded-full hover:bg-amber-800 hover:text-white transition-colors">
+                {{ ucfirst($cat) }}
+            </button>
         @endforeach
     </div>
 
@@ -99,36 +99,30 @@
     </div>
 </div>
 
-@endsection
-
-@push('scripts')
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const categoryButtons = document.querySelectorAll('.category-btn');
+function filterItems(category) {
     const menuItems = document.querySelectorAll('.menu-item');
 
-    categoryButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const category = button.getAttribute('data-category');
-
-            // Update active button styles
-            categoryButtons.forEach(btn => {
-                btn.classList.remove('active', 'bg-amber-900', 'text-white');
-                btn.classList.add('bg-amber-100', 'text-amber-900');
-            });
-            button.classList.remove('bg-amber-100', 'text-amber-900');
-            button.classList.add('active', 'bg-amber-900', 'text-white');
-
-            // Filter menu items
-            menuItems.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = '';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
+    menuItems.forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+            item.style.display = '';
+        } else {
+            item.style.display = 'none';
+        }
     });
-});
+
+    // Update active button state
+    document.querySelectorAll('.category-btn').forEach(btn => {
+        if (btn.textContent.trim().toLowerCase() === category ||
+           (category === 'all' && btn.textContent.trim() === 'Toate')) {
+            btn.classList.remove('bg-amber-100', 'text-amber-900');
+            btn.classList.add('bg-amber-900', 'text-white');
+        } else {
+            btn.classList.remove('bg-amber-900', 'text-white');
+            btn.classList.add('bg-amber-100', 'text-amber-900');
+        }
+    });
+}
 </script>
-@endpush
+
+@endsection

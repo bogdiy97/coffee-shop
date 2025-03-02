@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\MenuItem;
 use App\Models\AboutContent;
+use Illuminate\Http\Request;
 
 class PublicController extends Controller
 {
@@ -25,9 +26,17 @@ class PublicController extends Controller
         return view('public.about', compact('aboutContent'));
     }
 
-    public function menu()
+    public function menu(Request $request)
     {
-        $menuItems = MenuItem::orderBy('category')->get();
-        return view('public.menu', compact('menuItems'));
+        $category = $request->query('category', 'all');
+
+        $query = MenuItem::query();
+
+        if ($category !== 'all') {
+            $query->where('category', $category);
+        }
+
+        $menuItems = $query->orderBy('category')->get();
+        return view('public.menu', compact('menuItems', 'category'));
     }
 }
