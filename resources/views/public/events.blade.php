@@ -55,9 +55,9 @@
             <p class="text-amber-200 mb-8">
                 De la întâlniri de afaceri la aniversări speciale, suntem pregătiți să găzduim evenimentul tău
             </p>
-            <a href="mailto:contact@herdcoffee.ro"
+            <a "
                class="inline-block bg-white text-amber-900 px-8 py-3 rounded-full hover:bg-amber-100 transition-colors">
-                Contactează-ne
+                Ne gasesti la 0744 651 643
             </a>
         </div>
     </div>

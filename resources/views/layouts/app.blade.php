@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Herd Coffee - @yield('title')</title>
+    <title>CAZYMY - @yield('title')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -29,7 +29,8 @@
     <nav class="fixed w-full z-50 backdrop-blur-md bg-amber-900/90 text-white">
         <div class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
-                <a href="{{ route('home') }}" class="font-playfair text-2xl font-bold">Herd Coffee</a>
+                <a href="{{ route('home') }}" class="font-playfair text-2xl font-bold">CAZYMY
+                </a>
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8">
@@ -66,7 +67,7 @@
             <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
                 <div>
                     <h3 class="font-playfair text-xl mb-4">Contact</h3>
-                    <p>Strada Exemplu, Nr. 123</p>
+                    <p>Șoseaua Gheorghe Ionescu Sisești 267, București</p>
                     <p>București, România</p>
                     <p>contact@herdcoffee.ro</p>
                 </div>
@@ -108,5 +109,7 @@
         window.addEventListener('scroll', reveal);
         reveal(); // Initial check
     </script>
+
+    @stack('scripts')
 </body>
 </html>

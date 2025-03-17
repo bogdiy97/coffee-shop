@@ -6,7 +6,7 @@
 <!-- Hero Section -->
 <div class="relative h-[40vh] flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0">
-        <img src="{{ asset('storage/menu/menu-hero.jpg') }}" alt="Menu Background"
+         <img src="{{ url('storage/menu/menu-hero.jpg') }}" alt="Menu Background"
              class="w-full h-full object-cover opacity-80">
         <div class="absolute inset-0 bg-gradient-to-b from-amber-900/50 to-amber-900/70"></div>
     </div>
@@ -92,9 +92,9 @@
     <div class="max-w-2xl mx-auto reveal">
         <h2 class="font-playfair text-3xl font-bold text-amber-900 mb-4">Rezervă o Masă</h2>
         <p class="text-gray-600 mb-8">Pentru grupuri mai mari de 6 persoane, te rugăm să ne contactezi în avans</p>
-        <a href="tel:+40123456789"
+        <a
            class="inline-block bg-amber-900 text-white px-8 py-3 rounded-full hover:bg-amber-800 transition-colors">
-            <i class="fas fa-phone-alt mr-2"></i>Sună-ne
+            <i class="fas fa-phone-alt mr-2"></i>Sună-ne 0744 651 643
         </a>
     </div>
 </div>
